@@ -364,7 +364,8 @@ public class EC2UnixLauncher extends EC2ComputerLauncher {
     private String getEC2HostAddress(EC2Computer computer) throws InterruptedException {
         Instance instance = computer.updateInstanceDescription();
         if (computer.getNode().usePrivateDnsName) {
-            return instance.getPrivateDnsName();
+            //return instance.getPrivateDnsName();
+            return instance.getPrivateIpAddress();
         } else {
             String host = instance.getPublicDnsName();
             // If we fail to get a public DNS name, try to get the public IP
